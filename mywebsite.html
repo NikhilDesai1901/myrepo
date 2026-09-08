@@ -1,0 +1,785 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nikhil Desai | Developer Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #080b12;
+            --card: rgba(255,255,255,0.045);
+            --border: rgba(255,255,255,0.09);
+            --text: #f5f7fb;
+            --muted: #9ba3b4;
+            --accent: #7c5cff;
+            --accent2: #00d4ff;
+        }
+
+        body {
+            font-family: "Inter", "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: rgba(124, 92, 255, 0.12);
+            filter: blur(120px);
+            border-radius: 50%;
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: rgba(0, 212, 255, 0.08);
+            filter: blur(120px);
+            border-radius: 50%;
+            right: -150px;
+            bottom: -100px;
+            z-index: -1;
+        }
+
+        /* Navigation */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(18px);
+            background: rgba(8,11,18,0.72);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* General */
+
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 110px 25px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 12px;
+            letter-spacing: -1.5px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 45px;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 30px;
+            color: #cbd1df;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #42e695;
+            box-shadow: 0 0 12px #42e695;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 88px);
+            line-height: 0.98;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8b6cff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(135deg, var(--accent), #5d3df5);
+            box-shadow: 0 10px 30px rgba(124,92,255,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(124,92,255,0.35);
+        }
+
+        .btn-secondary {
+            color: white;
+            border: 1px solid var(--border);
+            background: var(--card);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        /* About */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .glass-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124,92,255,0.35);
+        }
+
+        .glass-card h3 {
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .glass-card p {
+            color: var(--muted);
+        }
+
+        /* Skills */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 22px;
+            border-radius: 15px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .skill-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .skill p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* Projects */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .project {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .project h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 10px;
+            border-radius: 7px;
+            background: rgba(124,92,255,0.1);
+            border: 1px solid rgba(124,92,255,0.18);
+            color: #c9c0ff;
+            font-size: 12px;
+        }
+
+        /* Journey */
+
+        .timeline {
+            border-left: 1px solid var(--border);
+            margin-left: 10px;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--accent);
+            left: -36px;
+            top: 8px;
+            box-shadow: 0 0 15px rgba(124,92,255,0.7);
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 5px;
+        }
+
+        .timeline-item span {
+            color: var(--accent2);
+            font-size: 13px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            margin-top: 7px;
+        }
+
+        /* Contact */
+
+        .contact-box {
+            text-align: center;
+            padding: 65px 30px;
+        }
+
+        .contact-box h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .about-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .contact-box h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Nikhil<span>.</span></div>
+
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Currently learning & building
+            </div>
+
+            <h1>
+                Hi, I'm <br>
+                <span class="gradient-text">Nikhil Desai.</span>
+            </h1>
+
+            <p>
+                BCA graduate exploring the world of software, Linux,
+                Git, GitHub, Python and DevOps — one concept at a time.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Get In Touch
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <p class="section-description">
+            A curious developer at the beginning of his professional journey,
+            focused on building strong fundamentals and turning what he learns
+            into practical projects.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="glass-card">
+                <h3>BCA Graduate</h3>
+
+                <p>
+                    Recently completed a Bachelor of Computer Applications
+                    and now focusing on developing practical technical skills
+                    for the software industry.
+                </p>
+            </div>
+
+            <div class="glass-card">
+                <h3>DevOps Journey</h3>
+
+                <p>
+                    Currently exploring Linux, Git, GitHub and the fundamentals
+                    of DevOps with the goal of building a strong foundation
+                    before moving into advanced tools and cloud technologies.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
+
+        <p class="section-description">
+            Technologies and concepts I have been learning and practicing.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill">
+                <div class="skill-name">Python</div>
+                <p>Programming fundamentals, OOP and problem solving</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Git</div>
+                <p>Commits, branches, merging, tags and version control</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">GitHub</div>
+                <p>Repositories, remotes, pushing, cloning and collaboration</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Linux</div>
+                <p>Terminal, commands, filesystem and system fundamentals</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">NumPy</div>
+                <p>Numerical computing and data manipulation</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Pandas</div>
+                <p>Data analysis and working with datasets</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Matplotlib</div>
+                <p>Data visualization and plotting</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">DevOps</div>
+                <p>Currently building fundamentals and exploring the ecosystem</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            Selected <span>Projects</span>
+        </h2>
+
+        <p class="section-description">
+            Projects and practical work from my learning journey.
+        </p>
+
+        <div class="projects-grid">
+
+            <div class="glass-card project">
+
+                <div class="project-number">01 — FINAL YEAR PROJECT</div>
+
+                <h3>Employee Attrition Prediction</h3>
+
+                <p>
+                    A machine-learning project focused on predicting employee
+                    attrition using employee-related data and data analysis
+                    techniques.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Machine Learning</span>
+                </div>
+
+            </div>
+
+
+            <div class="glass-card project">
+
+                <div class="project-number">02 — PRACTICE</div>
+
+                <h3>Python Projects</h3>
+
+                <p>
+                    Built and practiced smaller Python programs while learning
+                    programming fundamentals, algorithms, functions, classes
+                    and problem solving.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">OOP</span>
+                    <span class="tag">Algorithms</span>
+                    <span class="tag">Problem Solving</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Learning Journey -->
+
+    <section id="journey">
+
+        <h2 class="section-title">
+            My <span>Journey</span>
+        </h2>
+
+        <p class="section-description">
+            The path I'm currently following to become a stronger developer.
+        </p>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <span>FOUNDATION</span>
+
+                <h3>BCA</h3>
+
+                <p>
+                    Completed a Bachelor of Computer Applications and gained
+                    exposure to programming, databases, web technologies,
+                    cloud computing and cybersecurity.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <span>PROGRAMMING</span>
+
+                <h3>Python</h3>
+
+                <p>
+                    Practicing Python fundamentals, data structures,
+                    functions, recursion, algorithms, OOP and small projects.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <span>VERSION CONTROL</span>
+
+                <h3>Git & GitHub</h3>
+
+                <p>
+                    Learning repositories, commits, branches, merging,
+                    conflicts, tags, remotes, cloning and GitHub workflows.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <span>CURRENT FOCUS</span>
+
+                <h3>DevOps</h3>
+
+                <p>
+                    Building Linux and Git fundamentals and gradually moving
+                    toward the wider DevOps ecosystem.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+
+    <section id="contact">
+
+        <div class="glass-card contact-box">
+
+            <h2>Let's build something.</h2>
+
+            <p>
+                I'm continuously learning, experimenting and working toward
+                becoming a stronger developer. This portfolio will grow along
+                with my skills and projects.
+            </p>
+
+            <div class="buttons" style="justify-content:center;">
+
+                <!-- Replace these with your real links -->
+
+                <a href="#" class="btn btn-primary">
+                    GitHub
+                </a>
+
+                <a href="#" class="btn btn-secondary">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 Nikhil Desai · Built while learning and building.
+
+    </footer>
+
+
+</body>
+</html>
+```
