@@ -1,0 +1,240 @@
+1. pwd = check current location
+
+2. date = check date
+
+3. cat <filename> = read/view content of a file
+
+4. less <filename> = search for a content/word in a file
+
+5. ls = display all files
+
+6. cp <filename> <destination/path> = make copy of a file
+
+7. more <filename> = view content page by page of a file
+
+8. touch <filename> = create a empty file
+
+9. vi <filename> = creates and edit the file
+
+10. nano <filename> = creates and edits the file
+
+11. rm <filename> = deletes the file
+
+12. mkdir <dir_name> = creates a directory(folder)
+
+13. rmdir <dir_name> = deletes a directory(folder)
+
+14. rm -rf <dir_name> = also deletes a directory(folder)
+
+15. cd /path/folder/ = change/move to another folder/directory(path)
+
+16. cd .. = comes one path back
+
+17. cd = comes to root folder
+
+18. mv <file> <destination/path> = moves a file from one folder to another folder(cut copy)
+
+19. mv <oldname> <newname> = renames the file
+
+20. head -5 <filename> = read or display top 5 lines of a file
+
+21. tail -5 <filename> = read or display last 5 lines of a file
+
+22. sort <filename> = sorts the content of a file
+
+23. sort -r <filename> = sorts the content in reverse
+
+24. sort <filename> | uniq = display unique content from a file(remove repeated ones)
+
+25. split -l 3 <filename> = splits the file's content into the number that is mentioned
+
+26. grep "word" <filename> = searches and displays the content/word that is mentioned
+
+27. egrep "word1|word2" <filename> = searches and displays multiple content/word that are mentioned
+
+28. ls <filename>* = used to search for a file when the starting characters of a file is known
+
+29. ls *<filename> = used to search for a file when the ending characters of a file is known
+
+30. touch <filename>{1..5} = creates multiple files based on the mentioned numbers with the name mentioned(file1,file2,...)
+
+31. rm <filename>{1..5} = deletes multiple files based on the mentioned numbers with the name mentioned
+
+32. wc -l <filename> = counts n0.of lines in a file
+
+33. cmp <file1> <file2> = checks if 2 files are identical or not
+
+34. diff -u <file1> <file2> = compares and display difference between two files
+
+35. find ./ -name <filename> = used when the file name is known but doesnt know in which directory it is, displays path with file
+( find ./ -name *<filename> = also used when starting name is known )
+
+36. locate <filename> = this is also used to check the location of the file like the find command but sometimes "updatedb" command is
+need to be used when a file is newly created because it has its own database where every file is stored
+
+37. history = displays previously used commands
+
+38. script = screen records the terminal (ctrl+d is used to end) stores in typescript named file
+
+39. <command> --help = checks syntax and options available for a command ( ls --help )
+
+40. man <command> = get more info about a command ( man ls )
+
+41. bc = used to use a calculator ( simple operations +-*/ )
+
+42. cal = displays present month's calender
+
+43. cal <year> = displays the calender of entire year
+
+44. cal <month> <year> = displays calender of mentioned year and month
+
+45. uptime = checks from how long the system is running
+
+46. alias = creates a shortcut for a command temporarily ( alias l="ls -ltr )
+
+47. gzip -k <filename> = compresses a file ( usually used when a large file is need to be send )
+
+48. gzip -d <filename> or gunzip <filename> = decompress a file
+
+49. tar -czf <name_you_want_to_give_to_that_compressed_folder.tgz> <foldername> =
+   = compresses a folder( tar -czf files.tgz myfolder )
+
+50. tar -xzf <decompressed_folder_name> = decompresses a folder
+
+51. zip <name_you_want_to_give_to_that_compressed_file.zip> file1 file2 = compresses multiple files in on zipped file
+
+52. unzip <name_given_to_the_multiple_files_compressed_file> = decompresses the compressed one
+
+53. unzip -l <name_of_multiple_files_zipped_file> = list the files present in a zipped file that has multiple files in it
+
+54. wget <url> = to download a file from internet
+
+55. wget -0 <name_you_want_to_give> <url> = used to download and provide a name for it
+
+56. curl <link> = used to call API / retrieves the  information from internet
+
+57. apt <package> = used to install packages/dependancies( other than ubuntu like redhat,etc yum/dnf is used )
+
+58. rpm -qa | grep <app> = to check if an application is installed or not ( used in redhat , doesnt works in ubuntu )
+
+59. dnf list installed = lists all the installed applications
+
+60. apt search <package_name> = list available packages to install ( ubuntu )
+
+61. yum/dnf list available = list available packages to install ( for redhat ,etc )
+
+62. systemctl start/stop/status <service_name> = to start/stop the service ( status is used to check if it is running or not )
+
+63. systemctl list-units --type=service --all = to list all services
+
+64. printenv = to list all existing environment variables
+
+65. export <variable_name>="<path>" ..then.. export PATH=$<variable_name/bin:$PATH  = to add a new environment variable temporarily
+
+66. add a env variable in .bashrc file ,, next use export with that variable name ,, then type source .bashrc =
+    = this is used to create environment variable permanently ( type ls -la ..this prints every existing file ,,
+ then using nano edit the .bashrc file ,, there create a env variable(var="abc") then save it and now ,, export var ,, source .bashrc
+
+67. awk -F, '{print $3}' <csv_filename> = to print a specific column from a CSV file
+
+68. cut -c1-2 <filename> = to display starting two characters of all line( numbers are used based on neccessity )
+
+69. sed -n '5p' <filename> = displays a specific line from a file
+
+70. sed 's/from<word>/to<word>/g' <filename> = to replace a specific word within a file
+
+71. tr [:lower:] [:upper:] <<filename> = convert content from uppercase to lowercase
+
+72. truncate -s 5M <filename> = used to extend or shrink size of a file
+
+73. su <username> = to change user or login as different user
+
+74. sudo -i = login as a root user ( ubuntu )
+
+75. exit = exit as a current user
+
+76. sudo = executes command as a admin
+
+77. ssh username@ip_address ..or.. ssh user@hostname = to access linux server from other server( for eg. command prompt ).. to get a IPaddress use "ifconfig"
+
+78. scp <filename> username@ip_address:/<path> = copy a file from other server to linux server ( such as command prompt to linux )
+
+79. ( "ls -ltr" command is used to check permissions of files ,, rwx rw- r-- ,, user.group.others )
+
+80. chmod u+rwx <filename> & chmod u=rwx, go= <filename> = used to give permissions to work with a file (u=user, g=group, o=others, a=all )
+
+81. chown root/username <filename> = to change the owner of a file
+
+82. chgrp username <filename> = change group ownership of a file
+
+83. free = check free RAM space ( "free -th" shows total and better readable )
+
+84. top = to check % memory and CPU utilization
+
+85. du = to check disk utilization
+
+86. hostname = check hostname of the linux server
+
+87. lscpu = to check cpu/core/thread info
+
+88. lsblk = to see list of storage devices ,disk partition
+
+89. uname -a = to see OS name of linux server
+
+90. ps -ef | grep <process_name> = to check if a process is running or not
+
+91. pgrep <process_name> = to get a PID of a process
+
+92. kill -9 <PID> = to stop a process by PID
+
+93. pkill <process_name> = to stop a process by name
+
+94. jobs = to see all the active jobs
+
+95. bg = to resume a job in background
+
+96. fg = to resume a job from foreground
+
+97. ifconfig = to check IP_addres of the machine
+
+98. ping <website>(www.google.com) = to check if a server or website is accessible or not
+
+99. reboot = to restart linux server
+
+100. shutdown = to shutdown linux server
+
+101. useradd <user> ..or..adduser <user> = to create a new user on linux server
+                                        ( "adduser" creates home directory for the user )
+
+102. passwd = to change password
+
+103. groupadd = to create a new group on linux server( to check group type cat /etc/group )
+
+104. id <user> = to check userid or groupid
+
+105. userdel <user> = to delete a user
+
+106. groupdel <group> = to delete a group
+
+107. su - <username> = change user
+
+108. usermod -aG <groupname> <username> = add user to a group
+
+109. " ./ " = used to execute script
+
+110. for chmod == ( 4= , 2=w , 1=x )
+
+111. renice -n 10/-5 -p <process_name> = to prioritize or de-prioritze the process ( greater the number
+         lesser the priority, smaller the number higher priority )
+
+112. df -h = to check disk space
+
+113. set -x = displays the commands that is used along with the output of it ( used in shell scripts )
+
+114. awk -F" " '{print $3}' = prints the specific column
+
+115. set -e = exits the script if an error occurs ( good practice )
+
+116. set -o pipefail = exts the script if there is a pipefail ( | ␦)
+
+117. echo $? = to see failed commands
