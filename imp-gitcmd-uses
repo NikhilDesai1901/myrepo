@@ -1,0 +1,83 @@
+1. git init = to consider a file/folder as a git repository
+
+2. git add <name> = move to staging area ( git add * is used when there are multiple files )
+
+3. git commit -m <message> = to commit file
+
+4. git log = to view commit history and get IDs
+
+5. git status = to check the current status  of file
+
+6. git show <ID>:<name> = to view previous version
+
+7. git checkout <ID>: * = to get back to the previous version ( allows to make changes )
+
+8. git checkout <branch(master)> -- * = to come back to the current version that is using
+
+9. git diff --cached = to view what changes is made
+
+10. git restore . = to undo changes if accidently made
+
+11. git restore --staged . =  if an accidental changes is made and moved to staging area so to get back
+                             from staging area ( after this git restore . is used to undo changes )
+
+12. git restore --worktree . = if a change is made knowingly and moved to staging and after it accidental
+                               change is done and saved , so to rremove that error this is used
+
+13. git reset --soft/hard HEAD^ = if an accidental error is done and did commit too then to move back to
+                                  previous commit it is used
+
+14. git log -p -2 = to view last 2 commits
+
+15. git log --stat = to get summary of changes
+
+16. git log --pretty=oneline = to view previous commit history and IDs in oneline
+
+17. git log -S <func_name> = to view when a particular change is made ( func_name = h1 )
+
+18. git log --grep="<search>" = to search for a particular word in changes
+
+19. git log --since/until="2025-04-04" = to view the commits based on date
+
+20. git log --author="<name>" = to view which user have done changes/commits
+
+21. git push = to move the file to remote server
+
+22. git pull = to take the file from remote to local
+
+23. git clone <link> = to get access of the repository on linux terminal
+
+24. git branch = to chekch which branch that we are currently in
+
+25. git branch <branch_name> = to create new branch
+
+26. git checkout <branch_name> = to move to the another branch
+
+27. git merge <branch_name> = to merge the new branch with the main branch ( usually done when the
+                              changes is done in other branch and it have to copied in main one also )
+
+28. git push origin <branch> = used when only branch is showing up on github and the new branch also need
+                               to be added to it ( branch = new_branch_name )
+
+29. git forking === which allows to make changes to the code from another repo/account and merge to main
+                    ( from another acc visit the acc which you want to fork , then click on fork you will
+                      get the copy and then make the changes you want to make and click commit then send
+                      pull request by clicking on contribution now the main repo acc will get notified in
+                      the pull request tab there they can accept,review or reject the request then do
+                      git pull to get the updated code in local )
+
+30. sync fork == means after you forked from the main repo if there changes happend in the main one and
+                  you want to copy those changes too then click on sync fork
+
+31. .gitignore == when you dont wnat certain files to be tracked by git then you create a .gitignore file
+                  and put those files inside .gitignore , this will not track the files ( this is done
+                   because the folder is ofcourse need to be tracked but inside that folder there are
+                  certain files that need not to be tracked ..)
+
+
+32.git clean -n then git clean -f = deletes untracked files to get a clean repo
+
+33. git tag -a <shortcut_name(v6)> <id> = to provide a shortcut like for a commit id ( better for
+                                          recognizing a version )
+
+34. git push origin --tags = to push tags to remote server i.e. github
