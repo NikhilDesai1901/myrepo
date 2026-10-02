@@ -1,0 +1,89 @@
+nikhildesai@DESKTOP-BAG5CPM:~/aws_cloud.txt$ cat aws_notes
+>> On demand delivery of IT resources over the internet with pay-as-you-go model/pricing is called cloud
+computing ( using IT resources with the help of internet ..servers, storage, database, softwares ).
+
+>> VPC = Virtual Private Cloud ( our own private network in AWS
+
+>> IP address = it's like a unique ID that is used to connect/communicate between devices over a network
+
+>> Public IP = used to connect to internet
+   Private IP = used to connect internally or internal communication between devices within our network
+
+>> 10.0.0.0/8 = lower number means more IP address requirement and vice-versa. Each segment is of 8bits and total of
+                32bits and each segment can be of 255 IPs. ( here 2^24 i.e. 16,777,216 IP addresses are needed and
+                                                             we get 2 less IPs as they are taken for broadcast IP )
+
+>> Subnet = dividing a large, single network into multiple smaller interconnected pieces
+
+>> We create ec2 instance( server/VM ) in any of the subnets that is presented inside a VPC ( Our own network )
+
+>> Instance type = according to our performance requirement/workload we will choose the instance type that indicates
+                   about the configuration of a instance
+
+>> INSTANCE TYPES -
+                 . General purpose = for normal usecase
+                 . Compute optimize = for high performance
+                 . Memory optimized = for high memory/fast performance
+                 . Accelerated computing = for best computing purpose like best graphic card for gaming, faster calculation
+                 . Storage optimized = for fast i/o operations like read-write ops, for faster content retrieving
+
+>> Deploying website in AWS ec2 = after creating a instance and associating it with elastic IP connect it to you system by ssh. Then
+                                  go to root folder and go to var directory, there install apache server( httpd ). After this go to
+                                  /www/html directory and start&enable httpd then create a html file and put your website content in
+                                  it and save it. Now in instance go to security groups and edit inbound by adding rule that enables
+                                  'http' and make the address 0.0.0.0/0 and save it. Finally paste the public elastic IP in the
+                                  browser to see the Website.
+
+>> Creating a Windows ec2 instance = Create a instance and choose Windows as the OS ( follow the same steps as there in creating
+                                     linux instance ). Then click on connect and go to rdp client and click create password ( here
+                                     upload the key-pair file that is selected while creating the instance ) and click on decrypt key                                     
+                                     After this go to remote desktop connection in your pc and paste the public ip address in
+                                     <computer> then in the user block enter the name as administrator and paste the password and
+                                     click yes to access the ec2 windows server.
+
+
+>> Accessing server that is present in private subnet connected to a private route table  by creating NAT gateway = =
+                                   First create a VPC then create public subnets and private subnet and create one public route table
+                                   and private route table then attach a igw and associate public subnets to the public route table.
+                                   Now create a NAT gateway in public subnet and associate elastic IP and attach it then associate
+                                   private subnets to private route table. Then create two ec2 servers and place one server in public                                  
+                                   subnet and other in private subnet. Connect one server through ssh and save a file with the name
+                                   of key-pair file.pem and paste the key's encrypted content inside that created file ( both servers                                  
+                                   must have same key-pair ). Now go to that second server and connect through ssh but enter private                                   
+                                   IP of hat server. Now the private subnet's server is connected by internal connection.
+                                   ( private subnet's server doesn't have any public IP and if there also it has no use ).
+                                   ( The key's file inside public server should be secure so do chmod 400 to the file ).
+                                   ( The server in public subnet that is used to connect private server is called as jump server ).
+                                   ( Public server is also called as jump server )
+
+>> NAT gateway = It is used to connect private route table that are connected to private subnets. Its job is to translate the private             
+                 IP to public IP when the request is incoming and vice versa ensuring secure,private connection.
+
+>> Inbound = whichever the thing that is coming from the internet to the server.
+>> Outbound = whichever the thing that is going from the server to the internet.
+
+>> Security groups = protects the server
+   NACL = protects subnet ( works based on priority, after creation associate it to the subnet and add inbound rule for connection )
+
+
+>> VPC Peering = Establishing connection between VPCs and enabling communication is called VPC Peering.
+                 for connection of VPCs the CIDR(IP) should be different and not same ( the IPs should not be same for any )
+
+                 How to peer VPCs? >>
+                 Create two VPCs ( more than two VPC peering can also be done ) and create igw,route tables,subnets,
+                 NAT gateway ( if you want to peer a private server ) on both VPCs. After connecting both VPC's servers , go to
+                 peering connection of one VPC  server and enter the details of the servers you want to peer then go to the peering
+                 connection of another VPC server and in actions button select 'accept'. Now go to the route tables of 1st VPCs
+                 server and in edit route section add rule by entering the CIDR range of 2nd VPC in both route tables and do the same           
+                 for 2nd VPCs server, after this go to security groups of both server and add inbound rule of ICMP .
+                 Now in both ssh connected servers perform ping <private_IP> , if it pings then the VPC peering is successful.
+
+>> Taking a server backup = When take a ec2 server's backup it  works like a server level backup and stores it as a image in AMI
+                            window. To take a image( backup ) select the server and click on actions and select image and templates
+                            and enter the details then create it ,now the image( backup ) of the server is created.
+                            ( if you want to delete the backup go to the AMI and select and click actions and AMI de-register after
+                             this go to snapshots section and delete snapshot ).
+                               There are two ways to access the backup again, one is select it in ami and click launch instance from                             
+                               AMI or by simply clicking launch instamce and there in MY AMI select the AMI and launch the instance.
+                               ( While accessing and creating from the servers we can change the configuration and all which is known        
+                                as Vertical Scaling )
